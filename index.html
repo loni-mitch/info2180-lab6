@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <button onclick="myFunction()">SEARCH</button>
+   
+    <script> function myFunction() {
+        var httpRequest = new XMLHttpRequest();
+        var url= "request.php?q=definition";
+        httpRequest.onreadystatechange = function(){
+            if(httpRequest.readyState=== XMLHttpRequest.DONE){
+                if(httpRequest.status === 200){
+                    var response = httpRequest.responseText;
+                    alert(response);
+                }
+                else{
+                    alert('there was a problem');
+                }
+           }
+        }
+        httpRequest.open('GET', url);
+        httpRequest.send();
+            
+       //alert("A statement of the exact meaning of a word, especially in a dictionary.");
+        
+    }
+</script>
+</body>
+</html>
