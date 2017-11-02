@@ -43,14 +43,7 @@
 	
 }
 
-#searchArea {
-  background-color: transparent;
-  outline: none;
-  height: 35px;
-  font-size: 15px;
-  border: 0;
-  width: 100%;
-}
+
 .search-button {
   
   background-color: #0066cc;
@@ -69,4 +62,5 @@
     height: 37px;
     border: 0;
     /*border-bottom: 1px solid #ccc;*/
+
 }
