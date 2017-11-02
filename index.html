@@ -1,26 +1,39 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <link type ="text/css" rel="stylesheet"	href = "index.css"/>
+    </head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <body>
-    <button onclick="myFunction()">SEARCH</button>
+    <div class = "container">
+	<div id = "header">
+	<p style= "color: white;" class = "name"> WEB DICTIONARY</p>	
+	</div>	
+   
+    <div class="search-container">
+        <div id="searchArea">
+            <p>Look up the definition of a word e.g ajax, html, bar, php, javascript or css</p>
+            <form onsubmit="javascript:myFunction();return false;">
+                <input type="text" id="search" autofocus>
+                <input type="button" id="search-button" value="Search" onclick="myFunction()">
+            </form><br>
+        </div>
+        <div id="result"></div>
+    </div>
+           
    
     <script> function myFunction() {
+        var query= document.getElementById("search").value.toLowerCase();
         var httpRequest = new XMLHttpRequest();
-        var url= "request.php?q=definition";
         httpRequest.onreadystatechange = function(){
-            if(httpRequest.readyState=== XMLHttpRequest.DONE){
-                if(httpRequest.status === 200){
-                    var response = httpRequest.responseText;
-                    alert(response);
-                }
-                else{
-                    alert('there was a problem');
+            if(this.readyState=== XMLHttpRequest.DONE){
+                if(this.status === 200){
+                    document.getElementById("result").innerHTML = this.responseText;
                 }
            }
-        }
-        httpRequest.open('GET', url);
+        };
+        httpRequest.open('GET', "request.php?q="+ query, true);
         httpRequest.send();
-            
-       //alert("A statement of the exact meaning of a word, especially in a dictionary.");
         
     }
 </script>
